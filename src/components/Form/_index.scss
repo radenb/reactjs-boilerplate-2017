@@ -1,0 +1,76 @@
+
+
+
+
+
+
+ // - - - - - PROJECT SPECIFIC CSS - - - - - //
+select {
+    // color: blue;
+
+    option{
+    color: yellow;
+    }
+    option:fist-child {
+        color: red !important;
+    }
+}
+.message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+}
+#sendingMessage {
+    pointer-events: none;
+
+    &.sending {
+        // animation: slightDip 1.75s infinite forwards;
+    }
+    .L {
+        display: inline-block;
+    }
+    @for $i from 8 through 10 {
+        span:nth-child(#{$i}) {
+            animation:opacify 1.5s infinite forwards;
+            animation-delay:$i * .25s;
+        }
+    }
+}
+
+#errorMessage {
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+
+    &.error {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+ @keyframes opacify {
+    0 {
+        opacity:0;
+    }
+    90% {
+        opacity:.45;
+    }
+}
+@keyframes slightDip {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    20% {
+            transform: translate(-50%, -50%) rotate(5deg);
+    }
+    25% {
+            transform: translate(-50%, -50%) rotate(-5deg);
+    }
+    33% {
+            transform: translate(-50%, -50%) rotate(0deg);
+    }
+}
