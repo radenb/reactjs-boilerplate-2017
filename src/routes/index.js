@@ -31,7 +31,7 @@ router.get('*', function(request, response) {
    		 }, function(error, redirectLocation, renderProps) {
 	 		if (renderProps) {
                 var request = require('request')
-                request('http://admin.livelikeawinner.com/wp-json/wp/v2/pages', (error, req, body) => {
+                request('http://ADMINDOMAINLOCATION.com/wp-json/wp/v2/pages', (error, req, body) => {
                     var props = { data: JSON.parse(body)}
                     var content = ReactDOMServer.renderToString(
                         <RouterContext { ...renderProps } createElement={
@@ -47,7 +47,6 @@ var tempHead = `${head.title}
 <meta httpEquiv="content-type" content="text/html;charset=UTF-8" />
 <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon.png" />
 <link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css" />
 <link rel="stylesheet" type="text/css" href="/dist/style.css" />`;
 var scripts = `<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TimelineMax.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js" ></script>

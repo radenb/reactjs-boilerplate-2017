@@ -64,8 +64,6 @@ export default class Form extends React.Component {
 		this.spanTl = new TimelineMax({paused: true})
 		let spans = document.getElementsByClassName('L')
 		spans = Array.prototype.slice.call(spans)
-		console.log(spans)
-		// this.spanTl
 
 		spans.map((span, key) => {
 			let height = window.innerHeight
