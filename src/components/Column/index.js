@@ -14,30 +14,26 @@ export default class Column extends React.Component {
 		this.setState({
 			windowWidth: window.innerWidth
 		})
-
 		this.marginAdjustment()
+
 		window.addEventListener('resize', this.handleResize)
 	}
-
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.handleResize)
-	}
-
 	componentDidUpdate() {
 		this.marginAdjustment()
 	}
-
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.handleResize)
+	}
 	handleResize() {
 		clearTimeout(this.resizeTimer)
+
 		this.resizeTimer = setTimeout( () => {
 			this.setState({
 				windowWidth:window.innerWidth
 			})
-
 			this.marginAdjustment()
 		},250)
 	}
-
 	marginAdjustment() {
     	let windowWidth = this.state.windowWidth
 

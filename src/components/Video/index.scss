@@ -1,0 +1,9 @@
+.main-video {
+	width:100%;
+	@include breakpoint($size_mobile) {
+		padding-top:60px;
+	}
+	video {
+		width:100%;
+	}
+}

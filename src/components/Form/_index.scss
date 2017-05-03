@@ -1,19 +1,44 @@
+input, select {
 
+	transition: background 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	border-bottom: 2px solid $color_black-light;
+	width: 100%;
+	margin-bottom: 40px;
+	background: transparent;
 
-
-
-
-
- // - - - - - PROJECT SPECIFIC CSS - - - - - //
+	&:after {
+		content: '';
+		position: absolute;
+		height:1px;
+		width: 50%;
+		background:red;
+		bottom: 0;
+	}
+	& + div {
+		height: 2px;
+		width: 0;
+		bottom: 40px;
+		position: absolute;
+		background: $color_black;
+		transition: width 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+	}
+	&:focus + div {
+		width: 100%;
+	}
+}
 select {
-    // color: blue;
+	-webkit-appearance: none;
+	border-radius: 0;
+	background: url(./assets/svg/select-down-arrow.svg) calc(100% - 20px) center no-repeat;
+	background-size: 20px;
 
-    option{
-    color: yellow;
-    }
-    option:fist-child {
-        color: red !important;
-    }
+	&:invalid {
+		// color: $color_black-light;
+		color: red;
+	}
+}
+.anti {
+	display: none;
 }
 .message {
     position: absolute;
@@ -51,6 +76,11 @@ select {
         transform: translateY(0);
     }
 }
+
+
+ // - - - - - PROJECT SPECIFIC CSS - - - - - //
+
+
 
  @keyframes opacify {
     0 {
