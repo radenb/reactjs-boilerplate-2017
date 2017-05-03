@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { removeSpecialChars, replaceQuotes } from '../../utils/StringFormatter'
+import { TimelineMax } from 'gsap'
 
 export default class Form extends React.Component {
 	constructor() {
