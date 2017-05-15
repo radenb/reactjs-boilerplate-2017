@@ -7,6 +7,10 @@ import Helmet from 'react-helmet'
 
 import App from '../views/App'
 import Home from '../views/Home'
+import About from '../views/About'
+import Archive from '../views/Archive'
+import Contact from '../views/Contact'
+
 
 
 router.get('*', function(request, response) {
@@ -15,6 +19,9 @@ router.get('*', function(request, response) {
         <Router history={ browserHistory } >
           <Route path='/' component={ App } >
             <IndexRoute component={ Home } />
+            <About component={ About } />
+            <Archive component={ Archive} />
+            <Contact component={ Contact} />
           </Route>
         </Router>
       ),
@@ -22,7 +29,6 @@ router.get('*', function(request, response) {
    		 }, function(error, redirectLocation, renderProps) {
 	 		if (renderProps) {
                 var request = require('request')
-
                     var content = ReactDOMServer.renderToString(
                         <RouterContext { ...renderProps } createElement={
                             function(Component, renderProps) {

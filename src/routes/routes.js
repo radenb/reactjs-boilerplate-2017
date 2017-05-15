@@ -2,6 +2,9 @@ var React = require('react')
 
 import App from '../views/App'
 import Home from '../views/Home'
+import About from '../views/About'
+import Archive from '../views/Archive'
+import Contact from '../views/Contact'
 // import ReactGA from 'react-ga'
 
 function createElement(Component, props) {
@@ -26,6 +29,9 @@ module.exports = (
 	<Router history={ browserHistory } render={ applyRouterMiddleware(useScroll()) }  createElement={ createElement }>
 		<Route path='/' component={ App } >
 			<IndexRoute component={ Home } />
+			<About component={ About } />
+			<Archive component={ Archive} />
+			<Contact component={ Contact} />
 		</Route>
 	</Router>
 )
