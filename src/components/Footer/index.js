@@ -1,4 +1,4 @@
-'use strict' 
+'use strict'
 
 import React from 'react'
 
@@ -14,13 +14,12 @@ export default class Footer extends React.Component {
 		this.state.rendered = true
 	}
 	render() {
-		
+
 
 		return (
 			<div className="footer">
-				<p>Footer</p>
+				
 			</div>
 		)
 	}
 }
-

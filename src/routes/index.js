@@ -7,11 +7,6 @@ import Helmet from 'react-helmet'
 
 import App from '../views/App'
 import Home from '../views/Home'
-import Archive from '../views/Archive'
-import About from '../views/About'
-import Contact from '../views/Contact'
-
-import NotFound from '../views/404'
 
 
 router.get('*', function(request, response) {
@@ -20,10 +15,6 @@ router.get('*', function(request, response) {
         <Router history={ browserHistory } >
           <Route path='/' component={ App } >
             <IndexRoute component={ Home } />
-            <Route path='/work/' component={ Archive } />
-            <Route path='/about/' component={ About } />
-            <Route path='/contact/' component={ Contact } />
-            <Route path='/*' component={ NotFound } />
           </Route>
         </Router>
       ),
@@ -31,12 +22,11 @@ router.get('*', function(request, response) {
    		 }, function(error, redirectLocation, renderProps) {
 	 		if (renderProps) {
                 var request = require('request')
-                request('http://ADMINDOMAINLOCATION.com/wp-json/wp/v2/pages', (error, req, body) => {
-                    var props = { data: JSON.parse(body)}
+
                     var content = ReactDOMServer.renderToString(
                         <RouterContext { ...renderProps } createElement={
                             function(Component, renderProps) {
-                                return <Component { ...renderProps } { ...props } />
+                                return <Component { ...renderProps } />
                             }
                     } />)
 
@@ -56,14 +46,13 @@ var html = `<!doctype html><html><head>${tempHead}</head><body><div id="app">${c
 
                     response.send(html);
                     response.end();
-                })
-            }
+
+      }
 	 		else {
 	 			response.status(404).send('Sorry, something went wrong. Please try a different page')
 	 		}
-    	}
-    )
-
+  	}
+  )
 })
 
 module.exports = router

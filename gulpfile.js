@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     webp = require('gulp-webp'),
     reload = bs.reload,
     nodemon = require('gulp-nodemon');
-  
+
 
 
 function errorHandler(err) {
@@ -25,14 +25,14 @@ gulp.task('webp', function() {
 
 gulp.task('sass', function() {
     return gulp.src('./src/*.scss')
-                        .pipe(plumber())
-                        .pipe(sass.sync({
-                            outputStyle : 'compressed',
-                            errLogToConsole : true
-                        }))
-                        .pipe(autoprefixer())
-                        .pipe(gulp.dest('./dist/') )
-                        .pipe(bs.reload({ stream: true }))
+      .pipe(plumber())
+      .pipe(sass.sync({
+          outputStyle : 'compressed',
+          errLogToConsole : true
+      }))
+      .pipe(autoprefixer())
+      .pipe(gulp.dest('./dist/') )
+      .pipe(bs.reload({ stream: true }))
 })
 
 gulp.task('webpack', function() {
@@ -60,7 +60,7 @@ gulp.task('browserSync', ['nodemon'], function() {
     'dist/style.css',
     '**/*.php'
     ];
- 
+
     //initialize browsersync
     bs.init(files, {
         proxy: "http://localhost:8081",
@@ -82,4 +82,3 @@ gulp.task('watch', function() {
 })
 
  gulp.task('default', ['browserSync', 'webpack', 'sass', 'js', 'watch']);
-

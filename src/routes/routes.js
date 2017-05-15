@@ -2,24 +2,30 @@ var React = require('react')
 
 import App from '../views/App'
 import Home from '../views/Home'
-import Archive from '../views/Archive'
-import About from '../views/About'
-import Contact from '../views/Contact'
-import NotFound from '../views/NotFound'
+// import ReactGA from 'react-ga'
+
+function createElement(Component, props) {
+	return <Component { ...props } data={ window.DATA } />
+}
 
 import { useScroll } from 'react-router-scroll'
 
+// google analytics stuff
+// ReactGA.initialize('UA-98753551-1');
+//
+// function logPageView() {
+//   ReactGA.set({ page: window.location.pathname });
+//   ReactGA.pageview(window.location.pathname);
+// }
 
 import { applyRouterMiddleware, browserHistory, IndexRoute, Route, Router, ReactRouter } from 'react-router'
 
+// set onUpdate={ typeof window === 'object' ? logPageView : null } on Router Component
+
 module.exports = (
-	<Router history={ browserHistory } render={applyRouterMiddleware(useScroll())} >
+	<Router history={ browserHistory } render={ applyRouterMiddleware(useScroll()) }  createElement={ createElement }>
 		<Route path='/' component={ App } >
 			<IndexRoute component={ Home } />
-			<Route path='/work/' component={ Archive } />
-			<Route path='/about/' component={ About } />
-			<Route path='/contact/' component={ Contact } />
-            <Route path='/*' component={ NotFound } />
 		</Route>
 	</Router>
 )

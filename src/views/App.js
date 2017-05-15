@@ -25,12 +25,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div id="page">
-				<Helmet title="WayL.A." />
-				<Nav />
+				<Helmet title="Observables" />
 					<div id="content-wrapper">
 						 { this.props.children }
 					</div>
-				<Footer />
 			</div>
 		)
 	}
