@@ -22,12 +22,39 @@ class App extends React.Component {
 		this.state.rendered = true;
 	}
 
+	filterData() {
+		// console.log('filter data, app.props = ',this.props)
+
+		// remove slashes in pathname
+		let currentLoc = this.props.location.pathname.replace(/\//g, '');
+		// if we are at root aka '/', call it home
+		if (currentLoc === '') {currentLoc = 'home'}
+
+		this.state.pages.map( (page) => {
+			if (page.slug === currentLoc ) {
+				// console.log('we have match ' + page.slug + ' = ' + currentLoc)
+				this.currentPage = page
+				this.slug = page.slug
+			}
+		})
+	}
 	render() {
+		if (this.state.dataLoaded) {
+			this.filterData()
+		}
+	    let path = this.props.location.pathname;
+		let segment = path.split('/')[1] || 'root';
+		const { data } = this.props
 		return (
 			<div id="page">
 				<Helmet title="Observables" />
 					<div id="content-wrapper">
-						 { this.props.children }
+						<Nav />
+					 { this.state.dataLoaded &&
+						 React.cloneElement( this.props.children, {
+							page: this.currentPage,
+							key: segment
+						}) }
 					</div>
 			</div>
 		)

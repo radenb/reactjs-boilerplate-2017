@@ -19,9 +19,9 @@ router.get('*', function(request, response) {
         <Router history={ browserHistory } >
           <Route path='/' component={ App } >
             <IndexRoute component={ Home } />
-            <About component={ About } />
-            <Archive component={ Archive} />
-            <Contact component={ Contact} />
+            <Route path="/about/" component={ About } />
+            <Route path="/archive/" component={ Archive} />
+            <Route path="/contact/" component={ Contact} />
           </Route>
         </Router>
       ),
@@ -29,10 +29,12 @@ router.get('*', function(request, response) {
    		 }, function(error, redirectLocation, renderProps) {
 	 		if (renderProps) {
                 var request = require('request')
+                request('http://admin.radenb.com/wp-json/wp/v2/pages', (error, req, res) => {
+                    var props = { data: JSON.parse(res)}
                     var content = ReactDOMServer.renderToString(
                         <RouterContext { ...renderProps } createElement={
                             function(Component, renderProps) {
-                                return <Component { ...renderProps } />
+                                return <Component { ...renderProps } { ...props } />
                             }
                     } />)
 
@@ -53,7 +55,8 @@ var html = `<!doctype html><html><head>${tempHead}</head><body><div id="app">${c
                     response.send(html);
                     response.end();
 
-      }
+                })
+            }
 	 		else {
 	 			response.status(404).send('Sorry, something went wrong. Please try a different page')
 	 		}

@@ -83,7 +83,7 @@ export default class Nav extends React.Component {
 						<li onClick={ () => { this.handleMobileClick() }} >
 							<Link to="/">Home</Link>
 						</li>
-						<li onClick={ () => { this.handleMobileClick() }}><Link to="/work/">Work<div className="underline" style={{ 'backgroundColor' : color }}/></Link></li>
+						<li onClick={ () => { this.handleMobileClick() }}><Link to="/archive/">Work<div className="underline" style={{ 'backgroundColor' : color }}/></Link></li>
 						<li onClick={ () => { this.handleMobileClick() }}><Link to="/about/">About<div className="underline" style={{ 'backgroundColor' : color }}/></Link></li>
 						<li onClick={ () => { this.handleMobileClick() }}><Link to="/contact/">Contact<div className="underline" style={{ 'backgroundColor' : color }}/></Link></li>
 					</ul>

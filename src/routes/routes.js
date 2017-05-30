@@ -29,9 +29,9 @@ module.exports = (
 	<Router history={ browserHistory } render={ applyRouterMiddleware(useScroll()) }  createElement={ createElement }>
 		<Route path='/' component={ App } >
 			<IndexRoute component={ Home } />
-			<About component={ About } />
-			<Archive component={ Archive} />
-			<Contact component={ Contact} />
+            <Route path="/about/" component={ About } />
+            <Route path="/archive/" component={ Archive} />
+            <Route path="/contact/" component={ Contact} />
 		</Route>
 	</Router>
 )
